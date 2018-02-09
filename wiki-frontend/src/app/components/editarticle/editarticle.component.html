@@ -1,0 +1,23 @@
+<app-alert></app-alert>
+<h1>{{(page$ | async).title}}</h1>
+
+<p>
+  API Route: {{(page$ | async).route}}
+  <br /> Author Name: {{(page$ | async).authorFirstName}}
+  <br /> Revision ID: {{(page$ | async).revisionid}}
+  <br /> Modified Date: {{(page$ | async).modified}}
+  <br />
+  <!-- Page Data: {{(page$ | async).pagedata}} -->
+</p>
+<!-- Page Data: -->
+<!-- <div [froalaView]="editorContent"></div> -->
+<hr />
+
+<div>
+  <h3>Edit Article</h3>
+  <form (ngSubmit)="edit()">
+    <div [froalaEditor] [(froalaModel)]="editorContent" (ngSubmit)="edit()"></div>
+    <button class="button">Save Edits</button>
+    <button (click)="goBack()" class="button">Cancel</button>
+  </form>
+</div>

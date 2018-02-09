@@ -1,0 +1,36 @@
+<!-- <div>
+    <h3>Add New Article</h3>
+    <form name="form" (ngSubmit)="f.form.valid &&  add()" #f="ngForm" novalidate>
+      <div [ngClass]="{ 'has-error': f.submitted && !title.valid }">
+        <label for="uid">Article Title</label>
+        <input type="text" name="title" [(ngModel)]="model.title" #title="ngModel" placeholder="Type here" required />
+        <div *ngIf="f.submitted && !title.valid">Article Title is required</div>
+      </div>
+    
+    <div>
+        <button class = "button">Create</button>
+        <a [routerLink]="['/']" class = "button">Cancel</a>
+    </div>
+  </form>
+</div> -->
+
+<div class="app-content">
+
+  <div class="group">
+    <app-alert></app-alert>
+    <form role="form" style="text-align:center" (submit)="add()">
+      <br>
+      <mat-input-container>
+        <input matInput type="text" required [(ngModel)]="model.title" id="title" name="title">
+        <mat-placeholder>
+          <i class="material-icons app-input-icon">book</i>Title
+        </mat-placeholder>
+      </mat-input-container>
+      <br>
+      <button mat-raised-button color="warn" type="submit" name="action">Create</button>
+      <br>
+
+    </form>
+
+  </div>
+</div>

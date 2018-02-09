@@ -1,0 +1,51 @@
+<div class="wrapper">
+    <mat-card flex="40" class="form" [class.mat-elevation-z4]="!isActive" [class.mat-elevation-z20]="isActive" [class.mat-elevation-z1]="!isActive" (click)="isActive = !isActive">
+        <div class="form1">
+            <form #editForm="ngForm" id="ngForm" (ngSubmit)="onSubmit(editForm)">
+                <div>
+                    <label for="username">Username</label><br>
+                    <mat-form-field>
+                        <input matInput name="username" id="username" onClick="this.select();" type="text"  placeholder="{{user.username}}"/>
+                    </mat-form-field> 
+                </div>
+                <div>
+                    <label for="email">Email</label><br>
+                    <mat-form-field>
+                        <input matInput name="email" id="email" onClick="this.select();" type="text"  [(ngModel)] = "user.email"/>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <label for="first_name">First Name</label><br>
+                    <mat-form-field>
+                        <input matInput name="first_name" id="firstName" onClick="this.select();" type="text"  [(ngModel)] = "user.first_name"/>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <label for="last_name">Last Name</label><br>
+                    <mat-form-field>
+                        <input matInput name="last_name" id="lastName" onClick="this.select();" type="text" [(ngModel)] = "user.last_name"/>          
+                    </mat-form-field>
+                </div>
+                <div>
+                    <label for="password">Password</label><br>
+                    <mat-form-field>
+                        <input matInput name="password" id="password"  type="password" ngModel />
+                    </mat-form-field>
+                </div>
+            </form>
+            <mat-card-actions>
+                <button mat-button form="ngForm">Submit</button>
+                <button mat-button (click) = "cancelForm()">Cancel</button>
+            </mat-card-actions>
+        </div>
+    </mat-card>
+    <mat-card class="profileImage">
+        <div class="profileImage1" id="profileImage">
+            <img [src]=""  width="175px" height="300px"/>
+            <div>
+                <input #fileInput type="file" (change)="uploadImage($event)" style="display: none;"/>
+                <button mat-button (click)="fileInput.click()" >Upload File</button> 
+            </div>
+        </div>
+    </mat-card>
+</div>

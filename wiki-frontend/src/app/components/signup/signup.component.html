@@ -1,0 +1,53 @@
+<div class="app-content">
+
+  <div class="group">
+    <app-alert></app-alert>
+    <form role="form" style="text-align:center" (submit)="signup()">
+      <br>
+      <mat-input-container>
+        <input matInput type="text" required [(ngModel)]="user.username" id="username" name="username">
+        <mat-placeholder>
+          <i class="material-icons app-input-icon">face</i>Username
+        </mat-placeholder>
+      </mat-input-container>
+      <br>
+      <br>
+      <mat-input-container>
+        <input matInput type="password" required [(ngModel)]="user.psw" id="password" name="password">
+        <mat-placeholder>
+          <i class="material-icons app-input-icon">lock_open</i>Password
+        </mat-placeholder>
+      </mat-input-container>
+      <br>
+      <br>
+      <mat-input-container>
+        <input matInput type="first" required [(ngModel)]="user.first" id="first" name="first">
+        <mat-placeholder>
+          <i class="material-icons app-input-icon">face</i>First Name
+        </mat-placeholder>
+      </mat-input-container>
+      <br>
+      <br>
+      <mat-input-container>
+        <input matInput type="last" required [(ngModel)]="user.last" id="last" name="last">
+        <mat-placeholder>
+          <i class="material-icons app-input-icon">face</i>Last name
+        </mat-placeholder>
+      </mat-input-container>
+      <br>
+      <br>
+      <mat-input-container>
+        <input matInput type="email" required [(ngModel)]="user.eml" id="email" name="email">
+        <mat-placeholder>
+          <i class="material-icons app-input-icon">email</i>Email
+        </mat-placeholder>
+      </mat-input-container>
+      <br>
+      <br>
+      <button mat-raised-button color="warn" type="submit" name="action">Sign up</button>
+      <br>
+
+    </form>
+
+  </div>
+</div>

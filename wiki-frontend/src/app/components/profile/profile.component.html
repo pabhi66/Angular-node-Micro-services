@@ -1,0 +1,35 @@
+
+<div class="wrapper">
+  
+  
+  <mat-card class="middle-col mat-elevation-z8">
+      <mat-card-title>
+          {{user.username}}
+      </mat-card-title>
+      <mat-card-content>
+          <label>Recent Contributions</label>
+          <ul>
+              <li *ngFor="let activity of recentActivity">{{ activity }}</li>
+          </ul>
+      </mat-card-content>
+  </mat-card>
+  <mat-card class="left-col mat-elevation-z8">
+          <aside class="left-col">
+              <img [src]="" width="175px" height="300px"/>
+              
+              <button  mat-button *ngIf= "canEditProfile" (click)="goToEditProfile()">Edit Profile</button>
+              <button mat-button *ngIf="canEditProfile" (click)="goToEditPassword()"> Change Password</button>
+              <div class="account-info">
+                  <label>{{ user.first_name }}</label>
+                  <label>{{ user.last_name }}</label><br>
+                  <label>{{ user.email }}</label>
+              </div>
+                  <label>Last active on: {{ user.last_logout }}</label>
+          </aside>
+      </mat-card>
+  <mat-card class="right-col mat-elevation-z8">
+      <label>Extra stuff goes here if needed</label>
+  </mat-card>
+</div>
+
+

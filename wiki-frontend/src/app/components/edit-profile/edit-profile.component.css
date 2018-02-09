@@ -1,0 +1,24 @@
+.wrapper {
+    display: grid;
+    margin-top: 10%;
+    grid-template-rows:1fr;
+    grid-template-columns: .25fr 1fr; 
+    grid-gap: 10px;
+    grid-template-areas: "profileImage form";
+}
+
+.form {
+    max-width: 33%;
+    grid-area: form;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    
+}
+
+
+.profileImage {
+    margin-left: 45%;
+    grid-area: profileImage;
+}

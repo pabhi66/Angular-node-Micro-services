@@ -1,0 +1,40 @@
+<mat-menu #menu="matMenu" overlapTrigger="false">
+  <mat-option *ngFor="let route of (page$ | async).revisions | slice:1" [value]="route.route">
+    <a routerLink="/pages/{{(page$ | async).title}}/revisions/{{route.RevisionID}}">Rivision: {{route.route.split('/').reverse()[0]}}</a>
+  </mat-option>
+</mat-menu>
+<div class="revisions">
+
+  <mat-icon id="icon" [matMenuTriggerFor]="menu">history
+  </mat-icon>
+
+</div>
+
+
+<h1 class="title">{{(page$ | async).title}}</h1>
+
+<div class="author-info">
+  <li class="author">Author: {{(page$ | async).authorFirstName}}</li>
+  <li class="date">Last Edited: {{(page$ | async).modified}}</li>
+
+</div>
+
+<div class="content">
+  <div [froalaView]="pagedata"></div>
+</div>
+<hr />
+
+<div>
+  <div class="floating-btn">
+    <p *ngIf="(loggedIn$ | async)">
+      <a routerLink="edit" class="btn-floating" mat-fab>
+        <mat-icon>edit</mat-icon>
+      </a>
+    </p>
+  </div>
+  <a [routerLink]="['/']" class="button">
+    Back
+    <!-- <mat-icon>arrow_back</mat-icon>Back -->
+  </a>
+
+</div>

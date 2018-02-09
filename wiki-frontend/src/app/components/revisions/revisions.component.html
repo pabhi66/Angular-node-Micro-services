@@ -1,0 +1,40 @@
+<h1>{{(page$ | async).title}}</h1>
+<p>
+  API Route: {{(page$ | async).route}}
+  <br /> Author Name: {{(page$ | async).authorFirstName}}
+  <br /> Revision ID: {{(page$ | async).revisionid}}
+  <br /> Modified Date: {{(page$ | async).modified}}
+  <br />
+  <!-- Page Data: {{(page$ | async).pagedata}} -->
+</p>
+<!-- <div>
+  <mat-form-field>
+    <mat-select placeholder="Previous Revisions">
+      <mat-option *ngFor="let route of (page$ | async).revisions | slice:1" [value]="route.route">
+        <a routerLink="/pages/{{(page$ | async).title}}/revisions/{{route.RevisionID}}">Rivision: {{route.route.split('/').reverse()[0]}}</a>
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
+<mat-menu #menu="matMenu" overlapTrigger="false">
+  <mat-option *ngFor="let route of (page$ | async).revisions | slice:1" [value]="route.route">
+    <a routerLink="/pages/{{(page$ | async).title}}/revisions/{{route.RevisionID}}">Rivision: {{route.route.split('/').reverse()[0]}}</a>
+  </mat-option>
+</mat-menu>
+<div class="revisions">
+
+  <mat-icon id="icon" [matMenuTriggerFor]="menu">history
+  </mat-icon>
+
+</div>
+
+<a class="floating-btn" (click)="goBack()">
+  <mat-icon id="icon">update</mat-icon>
+
+</a>
+
+<div class="content">
+  <div [froalaView]="pagedata"></div>
+</div>
+<hr />
+
+<button (click)="goBack()" class="button"> Back</button>

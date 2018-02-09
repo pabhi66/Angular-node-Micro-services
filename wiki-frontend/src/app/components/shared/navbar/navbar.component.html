@@ -1,0 +1,47 @@
+<mat-toolbar class="mat-elevation-z6">
+  <span>Wiki</span>
+  &nbsp; &nbsp;
+  <button mat-button routerLink="/" routerLinkActive="active">
+    <mat-icon>home</mat-icon>Home</button>
+  &nbsp;
+  <button mat-button routerLink="/about" routerLinkActive="active">
+    <mat-icon>info</mat-icon>About</button>
+
+  <div id="search">
+    <mat-form-field>
+      <input id="searchBar" type="text" matInput [matAutocomplete]="auto" placeholder="Search" (keyup)="sendQuery($event, search)"
+        (keyup.enter)="changePage(search); search=''" [(ngModel)]="search" />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let item of subject | async" [value]="item.title" routerLink="/pages/{{item.title}}" (click)="value=''">
+          {{ item.title }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div id="status-buttons">
+    <div *ngIf="(loggedIn$ | async)" id="loginFix">
+      <div id="drop-down">
+        <mat-menu #menu="matMenu" xPosition="before" id="UserMenu" overlapTrigger="false">
+          <button mat-menu-item>{{firstName$ | async}}</button>
+          <hr matLine>
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+          <hr matLine>
+          <button mat-menu-item routerLink="/logout" routerLinkActive="active">Logout</button>
+        </mat-menu>
+      </div>
+      <mat-icon id="UserFace" [matMenuTriggerFor]="menu">face
+      </mat-icon>
+      &nbsp;
+      <!--<div>
+
+      </div>-->
+    </div>
+    <div *ngIf="!(loggedIn$ | async)">
+      <button mat-raised-button routerLink="/login" routerLinkActive="active">Login</button>
+      &nbsp; &nbsp;
+      <button mat-raised-button routerLink="/signup" routerLinkActive="active">Sign up</button>
+    </div>
+  </div>
+</mat-toolbar>

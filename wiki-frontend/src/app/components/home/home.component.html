@@ -1,0 +1,28 @@
+<div>
+  <h1>Welcome to the WiKi App</h1>
+  <h2 *ngIf="(loggedIn$ | async)">
+    <h3>Hi {{firstName$ | async}}! You're now logged in</h3>
+  </h2>
+
+  <ul>
+    <li *ngFor="let page of (pages$ | async)">
+      <h4>
+        <a routerLink="/pages/{{page.shortRoute}}">{{page.title}}</a>
+      </h4>
+      <!-- {{page.description}} -->
+      <div class="content" [froalaView]="page.description"></div>
+
+      <div>
+        <a class="continue" routerLink="/pages/{{page.shortRoute}}">Continue...</a>
+      </div>
+
+    </li>
+
+  </ul>
+  <p *ngIf="(loggedIn$ | async)">
+    <a [routerLink]="['/addarticle']" class="button">
+      Add New Article
+      <mat-icon>edit</mat-icon>
+    </a>
+  </p>
+</div>
