@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping package="com.jbenavides.pages">
+	<class name="Pages" table="page">
+		<meta attribute = "class-description">
+			this class contains the page detail.
+		</meta>
+		
+		<composite-id>
+			<key-property name="pageid" column="pageid"/>
+			<key-property name="revisionid" column="revisionid"/>
+		</composite-id>
+		
+		<property name="title" type="string" column="title"/>
+		<property name="modified" type="timestamp" column="modified"/>
+		<property name="author" type="integer" column="author"/>
+		<property name="pagedata" type="string" column="pagedata"/>
+		
+	</class>
+</hibernate-mapping>
